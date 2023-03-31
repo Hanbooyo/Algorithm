@@ -9,15 +9,13 @@ class Solution {
             int diff = Math.abs(num - n);
             if (diff < minDiff) {
                 minDiff = diff;
+                nums.clear(); // 리스트 초기화
+                nums.add(num); // 최소값 추가
+            } else if (diff == minDiff) {
+                nums.add(num); // 중복값 추가
             }
         }
-        for (int num : array) {
-            int diff = Math.abs(num - n);
-            if (minDiff == diff) {
-                nums.add(num);
-            }
-        }
-        answer = Collections.min(nums);
+        answer = Collections.min(nums); // 최소값 구하기
         return answer;
     }
 }
