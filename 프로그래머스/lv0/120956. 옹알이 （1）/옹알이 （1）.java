@@ -16,6 +16,7 @@ class Solution {
                 if (remaining.isEmpty()) {
                     return true;
                 }
+                //재귀
                 if (canPronounce(remaining)) {
                     return true;
                 }
