@@ -1,24 +1,18 @@
+
 function solution(s, n) {
-    let answer = '';
-
+    var answer = '';
     for (let i = 0; i < s.length; i++) {
-        const char = s[i];
-        let encryptedChar = '';
-
-        if (char === ' ') {
-            // 공백은 그대로 유지
-            encryptedChar = ' ';
-        } else {
-            const isLowerCase = /[a-z]/.test(char);
-            const startCharCode = isLowerCase ? 'a'.charCodeAt(0) : 'A'.charCodeAt(0);
-            const charCode = char.charCodeAt(0);
-            const shiftedCharCode = (charCode - startCharCode + n) % 26 + startCharCode;
-
-            encryptedChar = String.fromCharCode(shiftedCharCode);
-        }
-
-        answer += encryptedChar;
+    let charCode = s.charCodeAt(i);
+    if (charCode >= 65 && charCode <= 90) {
+    // 대문자인 경우
+    answer += String.fromCharCode(((charCode - 65 + n) % 26) + 65);
+    } else if (charCode >= 97 && charCode <= 122) {
+    // 소문자인 경우
+    answer += String.fromCharCode(((charCode - 97 + n) % 26) + 97);
+    } else {
+    // 공백인 경우
+    answer += ' ';
     }
-
+    }
     return answer;
 }
